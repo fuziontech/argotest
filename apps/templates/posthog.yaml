@@ -13,10 +13,6 @@ spec:
     targetRevision: 7.3.0 
     helm:
       releaseName: posthog
-      # Helm values files for overriding values in the helm chart
-      # The path is relative to the spec.source.path directory defined above
-      # valueFiles:
-      # - do_1_click_values.yaml 
   destination:
     server: https://kubernetes.default.svc
     namespace: posthog 
