@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: posthog 
+  namespace: argocd 
+spec:
+  project: posthog 
+  source:
+    chart: posthog 
+    repoURL: https://posthog.github.io/charts-clickhouse/ 
+    targetRevision: 7.3.0 
+    helm:
+      releaseName: posthog
+      # Helm values files for overriding values in the helm chart
+      # The path is relative to the spec.source.path directory defined above
+      valueFiles:
+      - do_1_click_values.yaml 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: posthog 
