@@ -13,6 +13,18 @@ spec:
     targetRevision: 7.3.0 
     helm:
       releaseName: posthog
+      values: |
+        cloud: "do"
+        deploymentType: "DigitalOcean 1-click"
+        ingress:
+          nginx:
+            enabled: true
+            redirectToTLS: false
+          letsencrypt: false
+        clickhouseOperator:
+          useNodeSelector: true
+        web:
+          secureCookies: false
   destination:
     server: https://kubernetes.default.svc
     namespace: posthog 
